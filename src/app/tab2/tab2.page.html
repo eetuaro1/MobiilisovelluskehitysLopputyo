@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Kysy </ion-title>
+    <ion-buttons slot="end">
+      <ion-tab-button tab="login" *ngIf="!authService.user">
+        <ion-icon name="log-in-outline"></ion-icon>
+        <ion-label>Login</ion-label>
+      </ion-tab-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-tab-button tab="tab1" (click)="signOut()" *ngIf="authService.user">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <ion-label>Log Out</ion-label>
+      </ion-tab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h2>Kysymyslomake</h2>
+  <ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-input
+          [(ngModel)]="kysymys.nimi"
+          label="Kysyjän nimi:"
+          placeholder="Nimi"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          [(ngModel)]="kysymys.kysymys"
+          label="Kysyjän kysymys:"
+          placeholder="Kysymys"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          [(ngModel)]="kysymys.sposti"
+          type="email"
+          label="Kysyjän sähköposti:"
+          placeholder="Sähköposti osoite"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          [(ngModel)]="kysymys.puhnro"
+          label="Kysyjän puhelinumero:"
+          placeholder="Puhelinumero"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          [(ngModel)]="kysymys.vastaus"
+          label="Vastaus:"
+          placeholder="Puhelin vai sähköposti"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+  <br />
+  <ion-button
+    class="center-button"
+    shape="round"
+    fill="outline"
+    color="success"
+    (click)="sent()"
+    >Lähetä</ion-button
+  >
+</ion-content>
